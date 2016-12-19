@@ -7,6 +7,10 @@ module.exports = function(app) {
     app.post('/api/estudiant', Controller.setEstudiant);
     // Devolver todos los estudiantes
     app.get('/api/estudiant', Controller.getEstudiants);
+    // Devolver todos los estudiantes ordenador por nombre
+    app.get('/api/estudiantOrderNom', Controller.getEstudiantsOrderNom);
+    // Devolver todos los estudiantes ordenador por nombre
+    app.get('/api/estudiantOrderAssign', Controller.getEstudiantsOrderAssign);
     // Devolver un estudiante
     app.get('/api/estudiant/:estudiant_id', Controller.getEstudiant);
     // Eliminar estudiante

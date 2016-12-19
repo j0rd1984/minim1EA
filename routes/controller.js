@@ -6,7 +6,28 @@ var Assignatura = require('./model/assignatura');
 
 // Obtiene todos los objetos estudiantes de la base de datos
 exports.getEstudiants = function (req, res){
-    Estudiant.find({"$query":{},"$orderby":{ "nom": 1, quantityest:-1 }},
+    Estudiant.find(
+        function(err, estudiant) {
+            if (err)
+                res.send(err);
+            res.json(estudiant);
+        }
+    );
+};
+
+
+exports.getEstudiantsOrderNom = function (req, res){
+    Estudiant.find({"$query":{},"$orderby":{ "nom": 1 }},
+        function(err, estudiant) {
+            if (err)
+                res.send(err);
+            res.json(estudiant);
+        }
+    );
+};
+
+exports.getEstudiantsOrderAssign = function (req, res){
+    Estudiant.find({"$query":{},"$orderby":{ "quantityest": -1 }},
         function(err, estudiant) {
             if (err)
                 res.send(err);

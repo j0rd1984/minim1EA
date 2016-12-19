@@ -205,7 +205,36 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('studentsDetailCtrl', function($scope, $http, ApiEndpoint, $state) {
+  .controller('studentsCtrlOrderNom', function($scope, $http, ApiEndpoint) {
+    $scope.message = "Página estudiantes";
+    $scope.estudiants = {};
+
+    // Obtenemos todos los estudiantes
+    $http.get(ApiEndpoint.url + '/estudiantOrderNom').success(function(data) {
+        $scope.estudiants = data;
+        console.log('Get Data: ' + data);
+      })
+      .error(function(data) {
+        console.log('Error: ' + data);
+      });
+
+  })
+
+  .controller('studentsCtrlOrderAssign', function($scope, $http, ApiEndpoint) {
+    $scope.message = "Página estudiantes";
+    $scope.estudiants = {};
+
+    // Obtenemos todos los estudiantes
+    $http.get(ApiEndpoint.url + '/estudiantOrderAssign').success(function(data) {
+        $scope.estudiants = data;
+        console.log('Get Data: ' + data);
+      })
+      .error(function(data) {
+        console.log('Error: ' + data);
+      });
+
+  })
+  .controller('studentsDetailCtrl', function($scope, $http, ApiEndpoint, $state) {
 
   $scope.message = "Detalle estudiante";
   $scope.studentID = ($state.params.studentId); //Obtenemos ID de la URI

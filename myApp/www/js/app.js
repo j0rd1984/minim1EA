@@ -53,6 +53,30 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+
+    .state('app.studentsCtrlOrderNom', {
+      url: '/studentsCtrlOrderNom',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/students.html',
+          controller: 'studentsCtrlOrderNom'
+        }
+      }
+    })
+
+    .state('app.studentsCtrlOrderAssign', {
+      url: '/studentsCtrlOrderAssign',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/students.html',
+          controller: 'studentsCtrlOrderAssign'
+        }
+      }
+    })
+
+
     .state('app.studentsDetail', {
       url: '/students/:studentId', //Le pasa la ID del estudiante
       cache: false,

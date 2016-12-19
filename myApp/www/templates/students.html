@@ -6,7 +6,8 @@
         <input type="text" placeholder="Buscar alumnos por nombre o dirección..." ng-model="searchText">
       </label>
     </div>
-
+    <a class="button" style="background-color: tomato" href="#/app/studentsCtrlOrderNom">Ordenar por nombre</a>
+    <a class="button" style="background-color: tomato" href="#/app/studentsCtrlOrderAssign">Ordenar por nnum. Assign</a>
 
     <ion-list>
       <ion-item ng-repeat="estudiants in estudiants | filter:searchText " href="#/app/students/{{estudiants._id}}" ng-click="selectEstudiant(estudiants._id)"> <!--href="#/app/subjects/{{subject._id}}" ng-click="selectSubject(subject._id)" -->

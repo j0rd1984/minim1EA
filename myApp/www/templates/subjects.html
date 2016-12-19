@@ -1,0 +1,33 @@
+<ion-view view-title="Lista de asignaturas">
+  <ion-content>
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Buscar asignaturas por nombre..." ng-model="searchText">
+      </label>
+    </div>
+    <ion-list>
+      <ion-item ng-repeat="subject in subjects | filter:searchText"> <!--href="#/app/subjects/{{subject._id}}" ng-click="selectSubject(subject._id)" -->
+        <h1 style="text-align: center">{{subject.nom}} {{subject.when}}</h1>
+        <div class="button-bar">
+          <a class="button" style="background-color: lightgreen" href="#/app/subjects/{{subject._id}}" ng-click="selectSubject(subject._id)">Ver estudiantes</a>
+          <a class="button" style="background-color: tomato" ng-click="deleteAssignatura(subject._id)">Eliminar</a>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <div class="list list-inset">
+      <h4 style="text-align: center">Añadir asignatura</h4>
+      <label class="item item-input">
+        <input type="text" placeholder="Nombre nueva asignatura" ng-model="newSubject.nom">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Año nueva asignatura" ng-model="newSubject.when">
+      </label>
+      <div class="button-bar">
+        <a class="button" ng-click="addSubject()">Añadir</a>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

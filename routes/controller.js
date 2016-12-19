@@ -6,7 +6,7 @@ var Assignatura = require('./model/assignatura');
 
 // Obtiene todos los objetos estudiantes de la base de datos
 exports.getEstudiants = function (req, res){
-    Estudiant.find(
+    Estudiant.find({"$query":{},"$orderby":{ "nom": 1, quantityest:-1 }},
         function(err, estudiant) {
             if (err)
                 res.send(err);
@@ -14,6 +14,7 @@ exports.getEstudiants = function (req, res){
         }
     );
 };
+
 
 //Modificar estudiante
 exports.modificarEstudiant = function (req, res){
@@ -146,7 +147,7 @@ exports.addEstudiant = function(req, res){
                 res.json(estudiant);
             }
             else if (estudiant == null){
-                console.log("El usuari no existeix!");
+                console.log("El usuari no existeix!!" + req.body.estudiant);
                 res.json(estudiant);
             }
             else {
@@ -158,6 +159,8 @@ exports.addEstudiant = function(req, res){
                     function(err, assignatura) {
                         if (err)
                             res.send(err);
+
+
                         //Devuelve la asignatura actualizada
                         Assignatura.find({_id : req.params.assignatura_id},
                             function(err, assignatura) {
@@ -166,6 +169,14 @@ exports.addEstudiant = function(req, res){
                                 console.log("Afegit", assignatura);
                                 res.json(assignatura);
                         });
+                    });
+
+                //Añadir la asignatura al estudiante
+                Estudiant.update( {_id : estudiant._id},
+                    {$push: {asignatures : req.params.assignatura_id} , $inc: { quantityest: 1 }},
+                    function(err, estudiant) {
+                        if (err)
+                            res.send(err);
                     });
             }
         });
@@ -181,7 +192,7 @@ exports.getEstudiant = function(req, res) {
                 Console.log(err);
             }
             else if (estudiant == null){
-                console.log("El usuari no existeix!");
+                console.log("El usuari no existeix! " + req.params.estudiant_id);
                 res.json(estudiant);
             }
             else {

@@ -1,0 +1,32 @@
+<ion-view view-title={{message}}>
+  <ion-content>
+    <ion-list show-reorder="reordering">
+      <ion-item class="item-remove-animate item-icon-right">
+        <h2>Nombre: {{estudiant.nom}}</h2>
+        <p>Localidad: {{estudiant.direccio}}</p>
+        <p>Teléfono de casa: {{estudiant.telefons.casa}}</p>
+        <p>Teléfono del trabajo: {{estudiant.telefons.feina}}</p>
+        <p>Asignatures: {{estudiant.quantityest}}  </p>
+
+
+          <!--<ion-item class="item-remove-animate item-icon-right" ng-repeat="estudiant in subject.estudiants" href="#/app/estudiants/{{estudiant}}" ng-click="selectEstudiant(estudiant)">-->
+          <!--<h2>{{estudiant}}</h2>-->
+          <ion-item class="item-remove-animate item-icon-right" ng-repeat="assignatura in estudiant.asignatures" >
+            {{assignatura}}
+            <!--<p>Localidad: {{estudiants.address}}</p>-->
+            <!--<a href="#/edit/{{user.id}}" class="button button-light icon ion-edit"></a>-->
+            <!--<ion-reorder-button class="ion-drag" on-reorder="move(user, $fromIndex, $toIndex)"></ion-reorder-button>-->
+            <!--<ion-option-button class="button-assertive icon-left ion-trash-b" ng-click="remove(user.id)">Delete</ion-option-button>-->
+          </ion-item>
+
+
+
+        <br>
+        <!--<a href="#/edit/{{user.id}}" class="button button-light icon ion-edit"></a>-->
+        <!--<ion-reorder-button class="ion-drag" on-reorder="move(user, $fromIndex, $toIndex)"></ion-reorder-button>-->
+          <button class="button button-assertive" ng-click="remove(estudiant._id)">Eliminar usuario</button>
+      </ion-item>
+    </ion-list>
+    <br><br><br>
+  </ion-content>
+</ion-view>
